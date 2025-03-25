@@ -26,6 +26,7 @@ import com.vishal2376.snaptick.widget.model.WidgetTaskModel
 @GlanceComposable
 fun WidgetTasks(
 	tasks: List<WidgetTaskModel>,
+	is24HourFormat: Boolean = false,
 	onTaskClick: (Int) -> Action,
 	modifier: GlanceModifier = GlanceModifier
 ) {
@@ -55,6 +56,7 @@ fun WidgetTasks(
 					Column {
 						WidgetTaskComponent(
 							task = task,
+							is24HourFormat = is24HourFormat,
 							onClick = onTaskClick(task.id),
 							modifier = GlanceModifier
 								.fillMaxWidth()

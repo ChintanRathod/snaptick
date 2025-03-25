@@ -1,7 +1,11 @@
 package com.vishal2376.snaptick.widget.components
 
+import android.text.format.DateFormat
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.GlanceModifier
@@ -29,6 +33,7 @@ import com.vishal2376.snaptick.widget.model.WidgetTaskModel
 @Composable
 fun WidgetTaskComponent(
 	task: WidgetTaskModel,
+	is24HourFormat: Boolean,
 	onClick: Action,
 	modifier: GlanceModifier = GlanceModifier
 ) {
@@ -83,7 +88,7 @@ fun WidgetTaskComponent(
 					text = if (task.isAllDayTaskEnabled()) {
 						"All Day"
 					} else {
-						task.getFormattedTime(is24HourFormat = false)
+						task.getFormattedTime(is24HourFormat)
 					},
 					style = TextStyle(
 						color = ColorProvider(color = LightGray),
